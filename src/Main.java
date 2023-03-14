@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -10,7 +11,12 @@ public class Main {
         noblePeople.add(new Person("Julia", "Popova Jr", 54));
         noblePeople.add(new Person("Sasha", "Bz Bz Wake Up Samurai", 26));
 
-        noblePeople.sort(new AmountWordsInSurnameComparator(3));
+        Comparator<Person> comparator = Person::surnameLengthComparator;
+//  знаю что в задании было использовать лямбда-выражение, но как говорилось в лекции ссылка на метод - это
+//  более компактная версия лямбда-выражения, извиняюсь за фривольность
+
+        noblePeople.sort(comparator);
+
         System.out.println(noblePeople);
     }
 }
